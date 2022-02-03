@@ -7,10 +7,9 @@ import MainHeader from './components/MainHeader/MainHeader';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // this function will only run once, and only when the application starts since there are no dependencies (second useEffect parameter)
+  // this function will only run once, only when the application starts since there are no dependencies (second useEffect parameter)
   useEffect(() => {
     if (localStorage.getItem('isLoggedIn') === '1') setIsLoggedIn(true);
-    
   }, []);
 
   const loginHandler = (email, password) => {
@@ -21,6 +20,7 @@ function App() {
   };
 
   const logoutHandler = () => {
+    localStorage.setItem('isLoggedIn', '0');
     setIsLoggedIn(false);
   };
 
